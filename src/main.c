@@ -395,6 +395,9 @@ void aws_mqtt_task(void *param) {
         }
 
         if (buttonTrigger) {
+            ESP_LOGI(TAG, "Button pressed");
+            gpio_set_level(RED_LED_GPIO, 0);
+            gpio_set_level(GREEN_LED_GPIO, 0);
             sprintf(cPayload, "{\"id\": \"%s\"}",  CONFIG_AWS_EXAMPLE_CLIENT_ID);
             paramsQOS0.qos = QOS0;
             paramsQOS0.payload = (void *) cPayload;
